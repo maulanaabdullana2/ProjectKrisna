@@ -1,0 +1,11 @@
+.round {
+    border-radius: 3rem;
+}
+
+
+.image1 {
+    background-image: url('../../assets/founder.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;       /* atau contain */
+    background-position: center;  /* untuk posisi tengah */
+}
