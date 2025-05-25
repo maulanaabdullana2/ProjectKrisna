@@ -75,10 +75,10 @@ export default function Register() {
 
                     <select name="program" value={formData.program} onChange={handleChange} className="w-full p-3 border rounded-md">
                         <option value="">Select Program</option>
-                        <option value="LAP A">Preparatory (age 1.5 - 2 Years)</option>
-                        <option value="LAP B">Toddler (age 2 - 3 Years)</option>
-                        <option value="LAP C">Playgroup (age 3 - 4 Years)</option>
-                        <option value="LAP C">Learnes & Achives (age 4 Years+)</option>
+                        <option value="Preparatory">Preparatory (age 1.5 - 2 Years)</option>
+                        <option value="Toddler">Toddler (age 2 - 3 Years)</option>
+                        <option value="Playgroup">Playgroup (age 3 - 4 Years)</option>
+                        <option value="Learnes & Achives">Learnes & Achives (age 4 Years+)</option>
                     </select>
 
                     <div className="flex items-center space-x-2">
