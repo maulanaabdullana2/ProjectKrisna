@@ -20,6 +20,11 @@ import imageevn2 from "../../assets/event2.jpg"
 import imageevn3 from "../../assets/event3.jpg"
 import imageevn4 from "../../assets/event4.jpg"
 import imageevn5 from "../../assets/event5.jpg"
+import imageevn6 from "../../assets/event6.jpg"
+import imageevn7 from "../../assets/event7.jpg"
+import imageevn8 from "../../assets/event8.jpg"
+import imageevn9 from "../../assets/event9.jpg"
+import imageevn10 from "../../assets/event10.jpg"
 import './home.css'
 
 const teachers = [
@@ -46,11 +51,16 @@ import Footer from '../../components/Footer';
 
 
 const testimonials = [
-    { image: imageevn1, text: "“blablablala bldfagda afadfadaallala lalala la lalal lalaaa lalala lalalalala”", judul: "contoh1" },
-    { image: imageevn2, text: "“testimoni ke dua dari orang tua yang sangat puas”", judul: "contoh2" },
-    { image: imageevn3, text: "“anak saya jadi lebih aktif dan semangat belajar!”", judul: "contoh3" },
-    { image: imageevn4, text: "“guru-gurunya sabar dan menyenangkan!”", judul: "contoh4" },
-    { image: imageevn5, text: "“anak saya jadi lebih disiplin dan ceria”", judul: "contoh5" },
+    { image: imageevn1, text: "This event combines environmental awareness with a love for reading. Children dress up in themed costumes and present their favorite books, learning the importance of caring for the planet while developing early literacy and public speaking skills.", judul: "EARTH & BOOK DAY" },
+    { image: imageevn2, text: "This fun field trip gave children an exciting outdoor learning experience. They actively joined various activities and explored the environment firsthand, guided by their teachers. It helped them become more independent, disciplined, and cooperative.", judul: "FUNTASIA FIELDTRIP" },
+    { image: imageevn3, text: "The children joyfully celebrate Chinese New Year by wearing bright red costumes and participating in cultural activities like singing and storytelling. This celebration encourages them to be more active, confident, and enthusiastic about learning while also introducing them to cultural diversity.", judul: "CHINESE NEW YEAR" },
+    { image: imageevn4, text: "This event offers an opportunity for teachers to connect, collaborate, and share inspiring ideas on teaching young children. Parents appreciate the patience and friendliness of the teachers, who always create a fun and nurturing learning environment.", judul: "TEACHERS GATHERING" },
+    { image: imageevn5, text: "In this eco-friendly activity, children are invited to plant trees around the school area. They learn about the importance of taking care of nature, develop a sense of responsibility, and enjoy outdoor learning experiences in a fun and cheerful way.", judul: "PLANTING 1000 TREES" },
+    { image: imageevn6, text: "The joyful spirit of Christmas is celebrated with performances by the children dressed in festive costumes. This event helps build their confidence to perform in front of others, promotes discipline, and fosters a sense of sharing and happiness among classmates.", judul: "CHRISMAS DAY" },
+    { image: imageevn7, text: "This in-school field trip provides a simulated outdoor experience where children practice real-life activities such as crossing the street and recognizing traffic signs. It teaches them discipline, independence, and safety in a hands-on, engaging way.", judul: "INSCHOOL FIELDTRIP" },
+    { image: imageevn8, text: "The children dress up in traditional costumes from various countries, celebrating global diversity in a joyful and engaging way. This activity teaches them about different cultures, encourages tolerance, and fosters a sense of global unity from an early age.", judul: "UNITED NATIONAL DAY" },
+    { image: imageevn9, text: "Children take part in fun games and light physical activities that help develop agility, sportsmanship, and teamwork. With a cheerful atmosphere, this event becomes one of the students’ favorites. They not only become more disciplined but also learn to value health through active play.", judul: "SPORTS DAY" },
+    { image: imageevn10, text: "The children celebrated Independence Day with fun games and activities in red-and-white outfits. They learned about patriotism, bravery, and unity in an engaging and joyful way.", judul: "INDEPENDENCE DAY" },
 ];
 
 
@@ -130,7 +140,7 @@ export default function Home() {
 
                     <div class="flex flex-col md:flex-row justify-between">
                         <div class="md:w-1/2 mb-8 md:mb-0">
-                            <h2 class="text-xl font-bold mb-4">
+                            <h2 class="text-2xl font-bold mb-4">
                                 PROBLEM
                             </h2>
                             <p class="font-marathi text-black-700 w-[90%]  text-lg ">
@@ -138,7 +148,7 @@ export default function Home() {
                             </p>
                         </div>
                         <div class="md:w-1/2 text-right">
-                            <h2 class="text-xl font-bold mb-4">
+                            <h2 class="text-2xl font-bold mb-4">
                                 SOLUTION
                             </h2>
                             <p class="font-marathi text-black-700 text-lg ">
@@ -224,48 +234,27 @@ export default function Home() {
                 <div className="text-center w-full">
                     <h1 className="text-4xl font-bold text-blue-900 mt-8">NEWS & EVENT</h1>
 
-                    <div className="relative mt-6 px-6 overflow-hidden">
-                        <div className="flex w-max gap-3 auto-scroll">
-                            {/* Original */}
-                            {testimonials.map((item, index) => (
+                    <div className="relative mt-10 px-6 overflow-hidden">
+                        <div className="flex auto-scroll gap-3">
+                            {[...testimonials, ...testimonials].map((item, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white rounded-[2rem] shadow-lg h-[40vh] px-4 pt-2 pb-4 flex flex-col w-[250px] flex-shrink-0"
+                                    className="bg-white rounded-[2rem] shadow-lg h-[50vh] px-4 pt-2 pb-4 flex flex-col w-[250px] flex-shrink-0"
                                 >
                                     <img
                                         src={item.image}
                                         alt={`testimonial-${index}`}
                                         className="w-full h-[20vh] object-cover rounded-[30px]"
                                     />
-                                    <h1 className="font-bold mt-2 mb-1">{item.judul}</h1>
-                                    <p className="text-gray-700 text-xs text-center italic px-2">{item.text}</p>
-                                </div>
-                            ))}
-
-                            {/* Duplicate for seamless loop */}
-                            {testimonials.map((item, index) => (
-                                <div
-                                    key={`dup-${index}`}
-                                    className="bg-white rounded-[2rem] shadow-lg h-[40vh] px-4 pt-2 pb-4 flex flex-col w-[250px] flex-shrink-0"
-                                >
-                                    <img
-                                        src={item.image}
-                                        alt={`testimonial-dup-${index}`}
-                                        className="w-full h-[20vh] object-cover rounded-[30px]"
-                                    />
-                                    <h1 className="font-bold mt-2 mb-1">{item.judul}</h1>
+                                    <h1 className="font-bold text-lg mt-2 mb-1">{item.judul}</h1>
                                     <p className="text-gray-700 text-xs text-center italic px-2">{item.text}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
+
                 </div>
             </div>
-
-
-
-
-
             <Footer />
         </>
     )

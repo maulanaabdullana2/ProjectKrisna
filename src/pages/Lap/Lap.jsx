@@ -112,19 +112,23 @@ export default function Lap() {
                 <div className="w-full md:w-1/2 relative z-10 flex flex-col items-start p-10 text-white" style={{ marginLeft: "50px" }}>
                     <h1 className="text-4xl md:text-5xl font-bold pb-7" style={{ fontFamily: "'Poetsen One', sans-serif" }}>A HAPPY</h1>
                     <h1 className="text-4xl md:text-5xl font-bold pb-10" style={{ fontFamily: "'Poetsen One', sans-serif" }}>PRE-SCHOOL</h1>
-                    <p className="text-lg pb-1">
+                    <p className="text-lg pb-1 font-montserrat font-bold">
                         Where every day is an unforgettable
                     </p>
-                    <p className="text-lg pb-7">
+                    <p className="text-lg pb-7 font-montserrat font-bold">
                         adventure of learning
                     </p>
                     <div className="flex gap-4">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold">
+                      <a href="/register">
+                          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold">
                             Join Us
                         </button>
-                        <button className="bg-transparent border border-white text-white px-6 py-2 rounded font-semibold hover:bg-white/20">
+                      </a>
+                     <a href="#about">
+                           <button className="bg-transparent border border-white text-white px-6 py-2 rounded font-semibold hover:bg-white/20">
                             Learn More
                         </button>
+                     </a>
                     </div>
                 </div>
                 <div className="w-full md:w-[500px] flex justify-end relative z-10  pr-4">
@@ -139,7 +143,7 @@ export default function Lap() {
                 transition={{ duration: 0.8 }}
                 className="max-w-4xl px-4 mx-auto ml-64 py-12 mt-20"
             >
-                <div className="flex items-center gap-40">
+                <div className="flex items-center gap-40" id="about">
                     <div className="relative group">
                         <img
                             alt="Back card"
@@ -467,8 +471,9 @@ export default function Lap() {
                     </div>
                 </div>
             </div>
+            
             <Footer />
         </div>
-        
+
     )
 }

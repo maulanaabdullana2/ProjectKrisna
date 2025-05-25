@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
+import { motion, AnimatePresence } from 'framer-motion';
 import "./style.css"
 import Footer from '../../components/Footer'
 import Success from '../../assets/Notif.png'
@@ -90,22 +91,28 @@ export default function Register() {
                     </button>
                 </form>
             </div>
-            {isSubmitted && (
-                <div
-                    className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-                    onClick={() => setIsSubmitted(false)}>
-                    <div
-                        className="p-4 rounded-lg"
-                        onClick={() => setIsSubmitted(false)}// <-- biar klik gambar gak nutup
+            <AnimatePresence>
+                {isSubmitted && (
+                    <motion.div
+                        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+                        onClick={() => setIsSubmitted(false)}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                     >
-                        <img src={Success} alt="Success" className="w-[500px] h-[650px]" />
-                    </div>
-                </div>
-            )}
-
-
-
-
+                        <motion.div
+                            className="p-4 rounded-lg"
+                            onClick={(e) => e.stopPropagation()} // Supaya klik gambar gak nutup
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.5, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                        >
+                            <img src={Success} alt="Success" className="w-[500px] h-[650px]" />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <Footer />
         </div>
     )
