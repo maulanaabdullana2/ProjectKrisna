@@ -1,4 +1,5 @@
 import React from 'react'
+import Logo from "../assets/logo.png"
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
       
      
       <div class="flex items-start">
-        <img src="https://placehold.co/100x100" alt="Little Alley PreSchool Logo" class="w-24 h-24 mr-4" />
+        <img src={Logo} alt="Little Alley PreSchool Logo" class="w-15 h-25 mr-4 mt-10" />
         <div class="text-sm space-y-4">
           <div>
             <p class="font-bold">Little Alley PreSchool ( LAP )</p>
@@ -35,16 +36,13 @@ export default function Footer() {
         </div>
         <div class="flex items-start gap-2 mb-2">
           <i class="fas fa-envelope mt-1"></i>
-          <span>LittleAlleyPreSchool.com</span>
+          <span>LittleAlleyPreschool.com</span>
         </div>
         <div class="flex items-start gap-2 mb-2">
           <i class="fab fa-instagram mt-1"></i>
-          <span>@LittleAlleyPreSchool</span>
+          <span>@LittleAlleyPreschool</span>
         </div>
-        <div class="flex items-start gap-2">
-          <i class="fab fa-twitter mt-1"></i>
-          <span>@LittleAlleyCyberSchool</span>
-        </div>
+        
       </div>
     </div>
   

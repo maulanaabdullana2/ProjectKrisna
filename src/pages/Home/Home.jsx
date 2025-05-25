@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -12,27 +12,31 @@ import image7 from "../../assets/kakashi.jpg"
 import image8 from "../../assets/rocklee.jpg"
 import image9 from "../../assets/naruto.jpg"
 import image10 from "../../assets/shikamaru.jpg"
-import imagebg1 from "../../assets/slider4.jpg"
-import imagebg2 from "../../assets/slider1.jpg"
-import imagebg3 from "../../assets/slider2.jpg"
+import imagebg1 from "../../assets/4.jpg"
+import imagebg2 from "../../assets/3.jpg"
+import imagebg3 from "../../assets/5.jpg"
 import imageevn1 from "../../assets/event1.jpg"
-import imageevn2 from "../../assets/news.jpg"
+import imageevn2 from "../../assets/event2.jpg"
+import imageevn3 from "../../assets/event3.jpg"
+import imageevn4 from "../../assets/event4.jpg"
+import imageevn5 from "../../assets/event5.jpg"
 import './home.css'
-const teacherImages = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
-    image10
+
+const teachers = [
+    { name: "Mr. John", image: image1 },
+    { name: "Ms. Alice", image: image2 },
+    { name: "Mr. Bob", image: image3 },
+    { name: "Ms. Clara", image: image4 },
+    { name: "Mr. Daniel", image: image5 },
+    { name: "Ms. Emma", image: image6 },
+    { name: "Mr. Frank", image: image7 },
+    { name: "Ms. Grace", image: image8 },
+    { name: "Mr. Henry", image: image9 },
+    { name: "Ms. Irene", image: image10 }
 ];
 
-import { useRef } from 'react';
-// Benar untuk Swiper v11+
+
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 
@@ -42,33 +46,33 @@ import Footer from '../../components/Footer';
 
 
 const testimonials = [
-    { image: imageevn1, text: "“blablablala bldfagda afadfadaallala lalala la lalal lalaaa lalala lalalalala”" , judul : "contoh1"},
-    { image: imageevn2, text: "“testimoni ke dua dari orang tua yang sangat puas”" , judul : "contoh2"},
-    { image: imageevn1, text: "“anak saya jadi lebih aktif dan semangat belajar!”" , judul : "contoh3"},
-    { image: imageevn2, text: "“guru-gurunya sabar dan menyenangkan!”" , judul : "contoh4"},
-    { image: imageevn1, text: "“anak saya jadi lebih disiplin dan ceria”" , judul : "contoh5"},
+    { image: imageevn1, text: "“blablablala bldfagda afadfadaallala lalala la lalal lalaaa lalala lalalalala”", judul: "contoh1" },
+    { image: imageevn2, text: "“testimoni ke dua dari orang tua yang sangat puas”", judul: "contoh2" },
+    { image: imageevn3, text: "“anak saya jadi lebih aktif dan semangat belajar!”", judul: "contoh3" },
+    { image: imageevn4, text: "“guru-gurunya sabar dan menyenangkan!”", judul: "contoh4" },
+    { image: imageevn5, text: "“anak saya jadi lebih disiplin dan ceria”", judul: "contoh5" },
 ];
+
 
 
 export default function Home() {
     const [index, setIndex] = useState(0);
-    const swiperRef = useRef(null);
 
     const handlePrev = () => {
         setIndex((prevIndex) =>
-            prevIndex === 0 ? teacherImages.length - 1 : prevIndex - 1
+            prevIndex === 0 ? teachers.length - 1 : prevIndex - 1
         );
     };
 
     const handleNext = () => {
         setIndex((prevIndex) =>
-            prevIndex === teacherImages.length - 1 ? 0 : prevIndex + 1
+            prevIndex === teachers.length - 1 ? 0 : prevIndex + 1
         );
     };
 
-    const prevImage = teacherImages[(index - 1 + teacherImages.length) % teacherImages.length];
-    const currentImage = teacherImages[index];
-    const nextImage = teacherImages[(index + 1) % teacherImages.length];
+    const prevImage = teachers[(index - 1 + teachers.length) % teachers.length];
+    const currentImage = teachers[index];
+    const nextImage = teachers[(index + 1) % teachers.length];
     return (
         <>
             <Navbar />
@@ -144,6 +148,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
             <div class="bg-gray-200 p-8 round shadow-lg max-w-[90%] mx-auto">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-3/4 p-10">
@@ -165,38 +170,40 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center justify-center mt-[50px]">
-                <h1 className="text-2xl font-tiltwarp mb-8">Meet Our Teachers</h1>
+                <h1 className="text-4xl font-tiltwarp mb-8">MEET OUR TEACHERS</h1>
 
-                <div className="flex justify-center items-center space-x-4 mb-8 transition-all duration-500">
+                <div className="flex justify-center items-center space-x-4 mb-4 transition-all duration-500">
                     <img
-                        alt="Prev 2"
+                        alt={teachers[(index - 2 + teachers.length) % teachers.length].name}
                         className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
-                        src={teacherImages[(index - 2 + teacherImages.length) % teacherImages.length]} // Gambar sebelumnya 2
+                        src={teachers[(index - 2 + teachers.length) % teachers.length].image}
                     />
                     <img
-                        alt="Prev 1"
+                        alt={teachers[(index - 1 + teachers.length) % teachers.length].name}
                         className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
-                        src={prevImage} // Gambar sebelumnya
+                        src={teachers[(index - 1 + teachers.length) % teachers.length].image}
+                    />
+                    <div className="flex flex-col items-center">
+                        <img
+                            alt={teachers[index].name}
+                            className="w-60 h-60 rounded-full bg-gray-300 object-cover"
+                            src={teachers[index].image}
+                        />
+                        <p className="mt-2 text-lg font-semibold">{teachers[index].name}</p>
+                    </div>
+                    <img
+                        alt={teachers[(index + 1) % teachers.length].name}
+                        className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
+                        src={teachers[(index + 1) % teachers.length].image}
                     />
                     <img
-                        alt="Current"
-                        className="w-60 h-60 rounded-full bg-gray-300 object-cover"
-                        src={currentImage} // Gambar saat ini
-                    />
-                    <img
-                        alt="Next 1"
+                        alt={teachers[(index + 2) % teachers.length].name}
                         className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
-                        src={nextImage} // Gambar berikutnya
-                    />
-                    <img
-                        alt="Next 2"
-                        className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
-                        src={teacherImages[(index + 2) % teacherImages.length]} // Gambar berikutnya 2
+                        src={teachers[(index + 2) % teachers.length].image}
                     />
                 </div>
 
-
-                <div className="flex space-x-4">
+                <div className="flex space-x-4 mt-4">
                     <button
                         className="w-9 h-9 flex items-center justify-center border-2 border-blue-500 rounded-full text-blue-500"
                         onClick={handlePrev}
@@ -212,49 +219,52 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="bg-blue-100 flex items-center justify-center mt-10">
-                <div className="text-center w-full max-w-6xl">
-                    <h1 className="text-3xl font-bold text-blue-900 mt-8">NEWS & EVENT</h1>
-                    <p className="italic text-gray-600">Hear From Our Parents</p>
 
-                    <Swiper
-                        modules={[Autoplay]}
-                        ref={swiperRef}
-                        spaceBetween={30}
-                        slidesPerView={4}
-                        autoplay={{ delay: 4000 }}
-                        className="mt-6"
-                    >
-                        {testimonials.map((item, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="bg-white rounded-[2rem] shadow-lg p-2 h-[40vh] overflow-hidden">
-                                    <img src={item.image} alt={`testimonial-${index}`} className="w-full h-[20vh] object-cover rounded-[30px]" />
-                                    <h1 className='font-bold mt-4 mb-2'>{item.judul}</h1>
-                                    <div className="p-2">
-                                        <p className="text-gray-700 text-xs text-center italic">{item.text}</p>
-                                    </div>
+            <div className="bg-blue-100 flex items-center justify-center mt-14 pt-10 pb-9 overflow-hidden">
+                <div className="text-center w-full">
+                    <h1 className="text-4xl font-bold text-blue-900 mt-8">NEWS & EVENT</h1>
+
+                    <div className="relative mt-6 px-6 overflow-hidden">
+                        <div className="flex w-max gap-3 auto-scroll">
+                            {/* Original */}
+                            {testimonials.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="bg-white rounded-[2rem] shadow-lg h-[40vh] px-4 pt-2 pb-4 flex flex-col w-[250px] flex-shrink-0"
+                                >
+                                    <img
+                                        src={item.image}
+                                        alt={`testimonial-${index}`}
+                                        className="w-full h-[20vh] object-cover rounded-[30px]"
+                                    />
+                                    <h1 className="font-bold mt-2 mb-1">{item.judul}</h1>
+                                    <p className="text-gray-700 text-xs text-center italic px-2">{item.text}</p>
                                 </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                            ))}
 
-                    {/* Custom Arrow Buttons */}
-                    <div className="flex justify-center mt-4 space-x-4">
-                        <button
-                            onClick={() => swiperRef.current.swiper.slidePrev()}
-                            className="w-9 h-9 flex items-center justify-center border-2 border-blue-500 rounded-full text-blue-500"
-                        >
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                        </button>
-                        <button
-                            onClick={() => swiperRef.current.swiper.slideNext()}
-                            className="w-9 h-9 flex items-center justify-center border-2 border-blue-500 rounded-full text-blue-500"
-                        >
-                            <FontAwesomeIcon icon={faArrowRight} />
-                        </button>
+                            {/* Duplicate for seamless loop */}
+                            {testimonials.map((item, index) => (
+                                <div
+                                    key={`dup-${index}`}
+                                    className="bg-white rounded-[2rem] shadow-lg h-[40vh] px-4 pt-2 pb-4 flex flex-col w-[250px] flex-shrink-0"
+                                >
+                                    <img
+                                        src={item.image}
+                                        alt={`testimonial-dup-${index}`}
+                                        className="w-full h-[20vh] object-cover rounded-[30px]"
+                                    />
+                                    <h1 className="font-bold mt-2 mb-1">{item.judul}</h1>
+                                    <p className="text-gray-700 text-xs text-center italic px-2">{item.text}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+
+
 
             <Footer />
         </>

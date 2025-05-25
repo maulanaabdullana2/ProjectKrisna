@@ -9,3 +9,17 @@
     background-size: cover;       /* atau contain */
     background-position: center;  /* untuk posisi tengah */
 }
+
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.auto-scroll {
+  animation: scroll-left 30s linear infinite;
+}

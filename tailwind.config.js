@@ -9,6 +9,7 @@ module.exports = {
       marathi: ['"Tiro Devanagari Marathi"', 'serif'],
       montserrat: ['Montserrat', 'sans-serif'],
       tiltwarp: ['"Tilt Warp"', 'cursive'],
+      poetsen: ['"Poetsen One"', 'sans-serif'],
     },
   },
   plugins: [],
