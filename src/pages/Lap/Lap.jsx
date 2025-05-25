@@ -1,4 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Navbar from '../../components/Navbar'
 import "./style.css"
 import logo2 from '../../assets/logo2.png';
@@ -29,6 +31,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 
+const fadeIn = (direction = "up", delay = 0) => {
+    return {
+        hidden: {
+            opacity: 0,
+            x: direction === "left" ? -50 : direction === "right" ? 50 : 0,
+            y: direction === "up" ? 50 : direction === "down" ? -50 : 0,
+        },
+        show: {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                delay: delay,
+                ease: "easeInOut",
+            },
+        },
+    };
+};
 
 const testimonials = [
     {
@@ -61,7 +82,22 @@ const galleryImages = [Galery1, Galery2, Galery3, Galery4, Galery5, Galery6, Gal
 
 export default function Lap() {
     const [swiperInstance, setSwiperInstance] = useState(null);
+    const [refAbout, inViewAbout] = useInView({ triggerOnce: true, threshold: 0.2 });
+    const [refVision, inViewVision] = useInView({ triggerOnce: true, threshold: 0.2 });
 
+    const [showAbout, setShowAbout] = useState(false);
+    const [showVision, setShowVision] = useState(false);
+
+    const [refWhy, inViewWhy] = useInView({ triggerOnce: true, threshold: 0.2 });
+    const [showWhy, setShowWhy] = useState(false);
+    const [refCurriculum, inViewCurriculum] = useInView({ triggerOnce: true, threshold: 0.2 });
+
+
+    useEffect(() => {
+        if (inViewAbout) setShowAbout(true);
+        if (inViewVision) setShowVision(true);
+        if (inViewWhy) setShowWhy(true);
+    }, [inViewAbout, inViewVision, inViewWhy]);
 
     return (
         <div>
@@ -96,46 +132,67 @@ export default function Lap() {
                 </div>
             </div>
 
-
-            <div className="max-w-4xl px-4 mx-auto ml-80 py-12 mt-20">
+            <motion.div
+                ref={refAbout}
+                initial={{ opacity: 0, x: -100 }}
+                animate={showAbout ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className="max-w-4xl px-4 mx-auto ml-64 py-12 mt-20"
+            >
                 <div className="flex items-center gap-40">
                     <div className="relative group">
                         <img
                             alt="Back card"
                             src="https://storage.googleapis.com/a1aa/image/d8ef3b8c-4a38-4a11-7f34-2897f7117777.jpg"
-                            className="absolute top-0 left-0 w-50 h-50 rounded-md object-cover transition-transform duration-500 ease-in-out transform rotate-[-10deg] z-10 group-hover:translate-x-4 group-hover:-translate-y-4 group-hover:scale-110 group-hover:z-20"
+                            className="absolute top-0 left-0 w-[250px] h-[250px] rounded-md object-cover transition-transform duration-500 ease-in-out transform rotate-[-10deg] z-10 group-hover:translate-x-4 group-hover:-translate-y-4 group-hover:scale-110 group-hover:z-20"
                         />
-
-                        {/* Card depan */}
                         <img
                             alt="Front card"
                             src="https://storage.googleapis.com/a1aa/image/405ee2e3-92a0-4c62-563a-c7293cd2229e.jpg"
-                            className="absolute top-6 left-8 w-50 h-50  rounded-md object-cover transition-transform duration-500 ease-in-out transform rotate-[3deg] z-20 group-hover:-translate-x-2 group-hover:translate-y-2 group-hover:scale-95 group-hover:z-10"
+                            className="absolute top-6 left-8 w-[250px] h-[250px] rounded-md object-cover transition-transform duration-500 ease-in-out transform rotate-[3deg] z-20 group-hover:-translate-x-2 group-hover:translate-y-2 group-hover:scale-95 group-hover:z-10"
                         />
                         <div className="invisible w-44 h-44 sm:w-52 sm:h-52"></div>
                     </div>
 
                     <div className="max-w-xl text-left relative">
                         <span className="block w-28 h-1 bg-blue-700 mb-3"></span>
-                        <h2 className="text-[#017BBD] font-bold text-4xl mb-3"
-                            style={{ fontFamily: "'Poetsen One', sans-serif" }}>
+                        <h2
+                            className="text-[#017BBD] font-bold text-4xl mb-3"
+                            style={{ fontFamily: "'Poetsen One', sans-serif" }}
+                        >
                             ABOUT US
                         </h2>
-                        <p className="text-gray-700 text-sm sm:text-base leading-relaxed" style={{ width: "80%" }}>
-                            Little Alley is refresh kindergarten curriculum framework highlights teaching and learning principles that are relevant for developing competences of young children. Kidsroom where learning meets imagination! We believe that every child is a unique learner with unlimited potential waiting to be unlocked. Kidsroom is designed to provide a nurturing and inspiring environment where children can grow academically and personally.
+                        <p
+                            className="text-gray-700 text-sm sm:text-base leading-relaxed"
+                            style={{ width: "80%" }}
+                        >
+                            Little Alley is refresh kindergarten curriculum framework highlights teaching and
+                            learning principles that are relevant for developing competences of young children.
+                            Kidsroom where learning meets imagination! We believe that every child is a unique
+                            learner with unlimited potential waiting to be unlocked. Kidsroom is designed to
+                            provide a nurturing and inspiring environment where children can grow academically
+                            and personally.
                         </p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-white py-10 px-4 mt-20 md:px-16 text-center">
-                <h2 className="text-[#017BBD] font-extrabold  text-4xl mb-10"
-                    style={{ fontFamily: "'Poetsen One', sans-serif" }}>
+            {/* VISION AND MISSION Section */}
+            <motion.div
+                ref={refVision}
+                initial={{ opacity: 0, y: 50 }}
+                animate={showVision ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="bg-white py-10 px-4 mt-20 md:px-16 text-center"
+            >
+                <h2
+                    className="text-[#017BBD] font-extrabold text-4xl mb-10"
+                    style={{ fontFamily: "'Poetsen One', sans-serif" }}
+                >
                     VISION AND MISSION
                 </h2>
 
-                <div className="grid grid-cols-3  items-start text-left mx-auto">
-
+                <div className="grid grid-cols-3 items-start text-left mx-auto">
                     <div className="space-y-4 text-right -mr-12 w-30">
                         <p>
                             Open the chance to every child can learn & each child learns
@@ -149,15 +206,9 @@ export default function Lap() {
                         </p>
                     </div>
 
-
                     <div className="flex items-center justify-center" style={{ marginTop: "-65px" }}>
-                        <img
-                            src={Ellipse}
-                            alt="Little Alley Preschool"
-                        />
-
+                        <img src={Ellipse} alt="Little Alley Preschool" />
                     </div>
-
 
                     <div className="space-y-4 -ml-12">
                         <p>
@@ -174,7 +225,8 @@ export default function Lap() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
+
 
             <div className="relative mt-20 mb-20 ">
                 {/* Awan Atas */}
@@ -229,92 +281,89 @@ export default function Lap() {
 
 
 
-            <div className="max-w-7xl mx-auto px-1 py-12 mt-5">
-                <h2 className="text-center text-[#017BBD] title-font font-extrabold text-4xl  leading-tight"
-                    style={{ fontFamily: "'Poetsen One', sans-serif" }}>
+            <motion.div
+                ref={refWhy}
+                initial={{ opacity: 0, y: 60 }}
+                animate={showWhy ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="max-w-7xl mx-auto px-1 py-12 mt-5"
+            >
+                <h2
+                    className="text-center text-[#017BBD] title-font font-extrabold text-4xl leading-tight"
+                    style={{ fontFamily: "'Poetsen One', sans-serif" }}
+                >
                     WHY
                     <br />
                     <span className="block mt-1">LITTLE ALLEY PRESCHOOL ?</span>
                 </h2>
+
                 <div className="mt-10 flex flex-col md:flex-row md:justify-center md:items-center md:space-x-20 space-y-10 md:space-y-0">
                     <div className="flex flex-col items-center max-w-[180px] md:max-w-none order-1 md:order-none">
                         <img
                             src={Children}
-                            alt="Young girl with two buns hairstyle holding a phone, standing in front of a colorful pink and purple abstract shape"
+                            alt="Young girl with two buns hairstyle holding a phone"
                             className="w-[180px] h-[180px] object-contain"
                             width="180"
                             height="180"
                         />
                     </div>
-                    <div className="max-w-xl text-center  text-[#0B6CBF] text-sm sm:text-base leading-relaxed order-2 md:order-none">
+                    <div className="max-w-xl text-center text-[#0B6CBF] text-sm sm:text-base leading-relaxed order-2 md:order-none">
                         We teach using various methods, become facilitators for students with diverse characters because they have the same opportunities. We provide our students with a strong foundation for lifelong learning and leading academically.
                     </div>
                 </div>
+
                 <div className="mt-10 flex flex-col md:flex-row md:justify-center md:items-center md:space-x-20 space-y-10 md:space-y-0">
-                    <p className="max-w-xl text-center  text-[#0B6CBF] text-sm sm:text-base leading-relaxed order-2 md:order-none">
+                    <p className="max-w-xl text-center text-[#0B6CBF] text-sm sm:text-base leading-relaxed order-2 md:order-none">
                         Our preschool program is designed to lay a strong foundation for children aged 1 to 6 years old. Through a blend of play-based learning, thematic approaches, and hands-on activities, we nurture early literacy, numeracy, social skills, and creativity. Our curriculum integrates language development, mathematics, science, arts, and physical education to provide a well-rounded educational experience.
                     </p>
                     <div className="flex flex-col items-center max-w-[180px] md:max-w-none order-1 md:order-none">
                         <img
                             src={Children}
-                            alt="Young girl with two buns hairstyle holding a phone, standing in front of a colorful pink and purple abstract shape"
+                            alt="Young girl with two buns hairstyle holding a phone"
                             className="w-[180px] h-[180px] object-contain"
                             width="180"
                             height="180"
                         />
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="max-w-7xl mx-auto px-4 py-5 mt-24">
-                <h2 className="text-center  title-font text-[#017BBD] font-extrabold text-4xl leading-tight mb-5"
-                    style={{ fontFamily: "'Poetsen One', sans-serif" }}>
+            {/* Curriculum */}
+            <motion.div
+                ref={refCurriculum}
+                variants={fadeIn("up", 0.3)}
+                initial="hidden"
+                animate={inViewCurriculum ? "show" : "hidden"}
+                className="max-w-7xl mx-auto px-4 py-5 mt-24"
+            >
+                <h2 className="text-center title-font text-[#017BBD] font-extrabold text-4xl leading-tight mb-5" style={{ fontFamily: "'Poetsen One', sans-serif" }}>
                     OUR CURRICULUM
                 </h2>
-                <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start justify-center gap-10 md:gap-20">
+                <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-10 md:gap-20 py-10">
                     <div className="flex-shrink-0 w-72 md:w-[320px]">
-                        <img alt="Yellow circular curriculum diagram with text and arrows describing integrated approach to learning, motor skills development, language and literacy, numeracy, authentic learning through quality interactions, children as constructors of knowledge, holistic development, and engaging children in purposeful play" className="w-[800px] h-[300px]" src={Education} />
+                        <img alt="Curriculum diagram" className="w-[800px] h-[300px]" src={Education} />
                     </div>
                     <div className="max-w-xl text-left">
                         <h2 className="text-[#0066b3] font-semibold text-lg md:text-xl mb-3 text-center md:text-left">
                             NURTURING EARLY LEARNERS CURRICULUM
                         </h2>
                         <ul className="list-disc list-outside pl-5 text-[#0066b3] text-sm md:text-base mb-6 space-y-2">
-                            <li>
-                                Published by the MOE (Ministry of Education) 2012
-                            </li>
-                            <li>
-                                NEL was designing and implementing a quality kindergarten curriculum for
-                                children aged four to six with six principles, encapsulated in the
-                                acronym “iTeach” as the basis for the best practices
-                            </li>
+                            <li>Published by the MOE (Ministry of Education) 2012</li>
+                            <li>NEL was designing and implementing a quality kindergarten curriculum for children aged four to six with six principles, encapsulated in the acronym “iTeach” as the basis for the best practices</li>
                         </ul>
-                        <h3 className="text-[#0066b3] font-bold text-base md:text-lg mb-2">
-                            iTeach
-                        </h3>
+                        <h3 className="text-[#0066b3] font-bold text-base md:text-lg mb-2">iTeach</h3>
                         <ul className="list-disc list-inside text-[#0066b3] text-sm md:text-base space-y-1">
-                            <li>
-                                i = integrated approach to learning
-                            </li>
-                            <li>
-                                T = Teachers as facilitators of learning
-                            </li>
-                            <li>
-                                e = engaging children in learning through purposeful play
-                            </li>
-                            <li>
-                                a = authentic learning through quality interactions
-                            </li>
-                            <li>
-                                c = children as constructors of knowledge
-                            </li>
-                            <li>
-                                h = holistic development
-                            </li>
+                            <li>i = integrated approach to learning</li>
+                            <li>T = Teachers as facilitators of learning</li>
+                            <li>e = engaging children in learning through purposeful play</li>
+                            <li>a = authentic learning through quality interactions</li>
+                            <li>c = children as constructors of knowledge</li>
+                            <li>h = holistic development</li>
                         </ul>
                     </div>
                 </div>
-            </div>
+            </motion.div>
+
             <div className="max-w-3xl mx-auto px-4 py-8 mt-24">
                 <h2 className="text-center text-[#017BBD] font-extrabold text-4xl mb-6"
                     style={{ fontFamily: "'Poetsen One', sans-serif" }}>
@@ -420,5 +469,6 @@ export default function Lap() {
             </div>
             <Footer />
         </div>
+        
     )
 }
