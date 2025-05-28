@@ -6,9 +6,8 @@ export default function Footer() {
     <footer class="bg-[#005A8C] text-white py-10">
       <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-10">
 
-
-        <div class="flex items-start">
-          <img src={Logo} alt="Little Alley PreSchool Logo" class="w-[200px] h-[230px] -ml-10 -mt-5" />
+        <div class="flex flex-col md:flex-row items-start gap-4">
+          <img src={Logo} alt="Little Alley PreSchool Logo" class="-mb-10 md:mb-0 w-[140px] h-[174px] md:w-[190px] md:h-[230px] -mt-10 -ml-9 md:-ml-10 md:-mt-5" />
           <div class="text-sm space-y-4">
             <div>
               <p class="font-bold">Little Alley PreSchool ( LAP )</p>
@@ -24,8 +23,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-
         <div class="text-sm">
           <p class="mb-4 max-w-sm">
             For inquiries, admissions, partnership opportunities or to learn more about Yayasan Tunas Anak Mulia, please contact us at:
@@ -42,15 +39,14 @@ export default function Footer() {
             <i class="fab fa-instagram mt-1"></i>
             <span>@LittleAlleyPreschool</span>
           </div>
-
         </div>
       </div>
-
 
       <div class="text-center mt-10 text-xs text-white">
         © 2025 <span class="font-bold">Yayasan Tunas Anak Mulia.</span> All Right Reserved
       </div>
     </footer>
+
 
   )
 }

@@ -1,31 +1,30 @@
 import React, { useState, useRef } from 'react'
-import Navbar from '../../components/Navbar'
+import Navbar from '../components/navbar'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import image1 from "../../assets/asuma.jpg"
-import image2 from "../../assets/choji.jpg"
-import image3 from "../../assets/guy.jpg"
-import image4 from "../../assets/hinata.jpg"
-import image5 from "../../assets/itachi.jpg"
-import image6 from "../../assets/jiraya.jpg"
-import image7 from "../../assets/kakashi.jpg"
-import image8 from "../../assets/rocklee.jpg"
-import image9 from "../../assets/naruto.jpg"
-import image10 from "../../assets/shikamaru.jpg"
-import imagebg1 from "../../assets/4.jpg"
-import imagebg2 from "../../assets/3.jpg"
-import imagebg3 from "../../assets/5.jpg"
-import imageevn1 from "../../assets/event1.jpg"
-import imageevn2 from "../../assets/event2.jpg"
-import imageevn3 from "../../assets/event3.jpg"
-import imageevn4 from "../../assets/event4.jpg"
-import imageevn5 from "../../assets/event5.jpg"
-import imageevn6 from "../../assets/event6.jpg"
-import imageevn7 from "../../assets/event7.jpg"
-import imageevn8 from "../../assets/event8.jpg"
-import imageevn9 from "../../assets/event9.jpg"
-import imageevn10 from "../../assets/event10.jpg"
-import './home.css'
+import image1 from "@assets/asuma.jpg"
+import image2 from "@assets/choji.jpg"
+import image3 from "@assets/guy.jpg"
+import image4 from "@assets/hinata.jpg"
+import image5 from "@assets/itachi.jpg"
+import image6 from "@assets/jiraya.jpg"
+import image7 from "@assets/kakashi.jpg"
+import image8 from "@assets/rocklee.jpg"
+import image9 from "@assets/naruto.jpg"
+import image10 from "@assets/shikamaru.jpg"
+import imagebg1 from "@assets/4.jpg"
+import imagebg2 from "@assets/3.jpg"
+import imagebg3 from "@assets/5.jpg"
+import imageevn1 from "@assets/event1.jpg"
+import imageevn2 from "@assets/event2.jpg"
+import imageevn3 from "@assets/event3.jpg"
+import imageevn4 from "@assets/event4.jpg"
+import imageevn5 from "@assets/event5.jpg"
+import imageevn6 from "@assets/event6.jpg"
+import imageevn7 from "@assets/event7.jpg"
+import imageevn8 from "@assets/event8.jpg"
+import imageevn9 from "@assets/event9.jpg"
+import imageevn10 from "@assets/event10.jpg"
 
 const teachers = [
     { name: "Mr. John", image: image1 },
@@ -47,7 +46,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Footer from '../../components/Footer';
+import Footer from '../components/Footer';
 
 
 const testimonials = [
@@ -86,7 +85,7 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <div className="bg-blue-600 h-[30rem] flex items-center justify-center">
+            <div className="bg-blue-600 h-[10rem] md:h-full flex items-center justify-center">
                 <div className="w-full relative">
                     {/* Swiper */}
                     <Swiper
@@ -106,21 +105,21 @@ export default function Home() {
                         <SwiperSlide>
                             <img
                                 src={imagebg1}
-                                className="w-full h-[30rem] object-cover rounded-none"
+                                className="w-full h-full object-cover "
                                 alt="Slide 1"
                             />
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
                                 src={imagebg2}
-                                className="w-full h-[30rem] object-cover rounded-none"
+                                className="w-full h-full object-cover"
                                 alt="Slide 2"
                             />
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
                                 src={imagebg3}
-                                className="w-full h-[30rem] object-cover rounded-none"
+                                className="w-full h-full object-cover"
                                 alt="Slide 3"
                             />
                         </SwiperSlide>
@@ -132,26 +131,27 @@ export default function Home() {
                 </div>
             </div>
 
+
+
             <div class="py-8">
                 <div class="container mx-auto px-6">
-                    <p class="font-marathi text-center text-black-700 mb-8 text-lg w-[70%] mx-auto">
-                        Yayasan Tunas Anak Mulia (YTAM), a educational institution dedicated to nurturing young minds through our preschool and tutoring services. Since our establishment in 2021, we have been committed to providing quality education and empower them to reach their full potential.
+                    <p class="font-marathi text-justify md:text-center text-black-700 mb-8 text-lg w-full md:w-[70%] px-4 mx-auto">
+                        Yayasan Tunas Anak Mulia (YTAM), an educational institution dedicated to nurturing young minds through our preschool and tutoring services. Since our establishment in 2021, we have been committed to providing quality education and empowering them to reach their full potential.
                     </p>
-
-                    <div class="flex flex-col md:flex-row justify-between">
+                    <div class="flex flex-col md:flex-row justify-center md:justify-between items-center text-center md:text-left">
                         <div class="md:w-1/2 mb-8 md:mb-0">
                             <h2 class="text-2xl font-bold mb-4">
                                 PROBLEM
                             </h2>
-                            <p class="font-marathi text-black-700 w-[90%]  text-lg ">
+                            <p class="font-marathi text-black-700 w-[90%] text-lg mx-auto md:mx-0 text-justify md:text-left">
                                 Busy parents and the impact of the COVID-19 pandemic have led to many children interacting more with gadgets than with their parents in the development in this modern era.
                             </p>
                         </div>
-                        <div class="md:w-1/2 text-right">
+                        <div class="md:w-1/2 md:text-right">
                             <h2 class="text-2xl font-bold mb-4">
                                 SOLUTION
                             </h2>
-                            <p class="font-marathi text-black-700 text-lg ">
+                            <p class="font-marathi text-black-700 text-lg w-[90%] mx-auto md:mx-0 lg:ml-16 text-justify md:text-right">
                                 We teach using various methods, become facilitators for students with diverse characters because they have the same opportunities. We provide our students with a strong foundation for lifelong learning and leading academically.
                             </p>
                         </div>
@@ -159,69 +159,86 @@ export default function Home() {
                 </div>
             </div>
 
-            <div class="bg-gray-200 p-8 round shadow-lg max-w-[90%] mx-auto">
+
+            <div class="bg-gray-200 p-8 rounded shadow-lg max-w-[90%] mx-auto">
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-3/4 p-10">
-                        <h1 class="text-4xl font-tiltwarp mb-2">SPEECH FOUNDER</h1>
-                        <h2 class="text-lg  font-tiltwarp mb-4">YAYASAN TUNAS ANAK MULIA</h2>
-                        <p class="mb-4 font-marathi ">Dear parents, students, and community members. It is my great pleasure to welcome you to the Yayasan Tunas Anak Mulia. Let me tell about my dedication in early childhood programme.</p>
-                        <p class="mb-4 font-marathi ">Because every child is a unique individual with different strengths and weakness, that's why our philosophy of education has been designed to our students.</p>
-                        <p class="mb-4 font-marathi ">I am delighted that our students continue to be very happy in a range of their ages. Reflecting on my experiences, I created the critical environment to our students school. We let them to ask as many as they want, we also understanding the concept of who children are, what they are capable or how they learn from the curiosity.</p>
-                        <p class="mb-4 font-marathi ">Thus, in this great time I engaged all parents to see and observe how your child learn and growth differently with nurture their talents to bring out their almost potential.</p>
-                        <p class="mb-4 font-marathi ">Finally, I believed that learning occurs when children are involved in first hand experiences is the point of child's growth.</p>
-                        <p class="mb-4 font-marathi ">Thank you for your trust and support to Yayasan Tunas Anak Mulia. I hope together we can nurture bright future</p>
+
+                    <div class="md:w-3/4 p-4 order-2 md:order-1">
+
+                        <h1 class="hidden md:block text-3xl font-tiltwarp mb-2 text-left">SPEECH FOUNDER</h1>
+                        <h2 class="hidden md:block text-lg font-tiltwarp mb-4 text-left">YAYASAN TUNAS ANAK MULIA</h2>
+
+                        <p class="mb-4 font-marathi text-justify">Dear parents, students, and community members. It is my great pleasure to welcome you to the Yayasan Tunas Anak Mulia. Let me tell about my dedication in early childhood programme.</p>
+                        <p class="mb-4 font-marathi text-justify">Because every child is a unique individual with different strengths and weakness, that's why our philosophy of education has been designed to our students.</p>
+                        <p class="mb-4 font-marathi text-justify">I am delighted that our students continue to be very happy in a range of their ages. Reflecting on my experiences, I created the critical environment to our students school. We let them to ask as many as they want, we also understanding the concept of who children are, what they are capable or how they learn from the curiosity.</p>
+                        <p class="mb-4 font-marathi text-justify">Thus, in this great time I engaged all parents to see and observe how your child learn and growth differently with nurture their talents to bring out their almost potential.</p>
+                        <p class="mb-4 font-marathi text-justify">Finally, I believed that learning occurs when children are involved in first hand experiences is the point of child's growth.</p>
+                        <p class="mb-4 font-marathi text-justify">Thank you for your trust and support to Yayasan Tunas Anak Mulia. I hope together we can nurture bright future.</p>
                     </div>
-                    <div class="md:w-1/4 flex flex-col items-center mt-8 md:mt-0">
+
+
+                    <div class="md:w-1/4 flex flex-col items-center mt-8 md:mt-0 order-1 md:order-2">
+
+                        <h1 class="block md:hidden text-2xl font-tiltwarp mb-1 text-center">SPEECH FOUNDER</h1>
+                        <h2 class="block md:hidden text-sm font-tiltwarp mb-3 text-center">YAYASAN TUNAS ANAK MULIA</h2>
+
                         <div class="w-[220px] h-[350px] image1 bg-red-700 rounded-[1rem] mb-4"></div>
                         <p class="font-tiltwarp">NOVITA WIJAYA</p>
-                        <p class="text-sm font-marathi ">Founder Yayasan Tunas Anak Mulia</p>
+                        <p class="text-sm font-marathi">Founder Yayasan Tunas Anak Mulia</p>
                     </div>
+
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center mt-[50px]">
-                <h1 className="text-4xl font-tiltwarp mb-8">MEET OUR TEACHERS</h1>
-
-                <div className="flex justify-center items-center space-x-4 mb-4 transition-all duration-500">
+            <div className="flex flex-col items-center justify-center mt-10 px-4">
+                <h1 className="text-2xl md:text-4xl font-tiltwarp mb-6 text-center">MEET OUR TEACHERS</h1>
+                <div className="flex flex-wrap justify-center items-center gap-2 md:space-x-4 mb-4 transition-all duration-500">
                     <img
                         alt={teachers[(index - 2 + teachers.length) % teachers.length].name}
-                        className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
+                        className="w-20 h-20 md:w-40 md:h-40 rounded-full bg-gray-300 opacity-70 object-cover hidden  lg:block"
                         src={teachers[(index - 2 + teachers.length) % teachers.length].image}
                     />
                     <img
                         alt={teachers[(index - 1 + teachers.length) % teachers.length].name}
-                        className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
+                        className="w-20 h-20 md:w-40 md:h-40 rounded-full bg-gray-300 opacity-70 object-cover"
                         src={teachers[(index - 1 + teachers.length) % teachers.length].image}
                     />
+
                     <div className="flex flex-col items-center">
                         <img
                             alt={teachers[index].name}
-                            className="w-60 h-60 rounded-full bg-gray-300 object-cover"
+                            className="w-32 h-32 md:w-60 md:h-60 rounded-full bg-gray-300 object-cover"
                             src={teachers[index].image}
                         />
-                        <p className="mt-2 text-lg font-semibold">{teachers[index].name}</p>
+                        <p className="mt-2 text-base md:text-lg font-semibold text-center w-full">
+                            {teachers[index].name}
+                        </p>
                     </div>
+
+                    {/* Gambar setelah */}
                     <img
                         alt={teachers[(index + 1) % teachers.length].name}
-                        className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
+                        className="w-20 h-20 md:w-40 md:h-40 rounded-full bg-gray-300 opacity-70 object-cover"
                         src={teachers[(index + 1) % teachers.length].image}
                     />
+
+                    {/* Gambar kanan paling ujung (hanya tampil di md ke atas) */}
                     <img
                         alt={teachers[(index + 2) % teachers.length].name}
-                        className="w-40 h-40 rounded-full bg-gray-300 opacity-70 object-cover"
+                        className="w-20 h-20 md:w-40 md:h-40 rounded-full bg-gray-300 opacity-70 object-cover hidden lg:block"
                         src={teachers[(index + 2) % teachers.length].image}
                     />
                 </div>
 
                 <div className="flex space-x-4 mt-4">
                     <button
-                        className="w-9 h-9 flex items-center justify-center border-2 border-blue-500 rounded-full text-blue-500"
+                        className="w-10 h-10 flex items-center justify-center border-2 border-gray-700 rounded-full text-gray-700"
                         onClick={handlePrev}
                     >
                         <FontAwesomeIcon icon={faArrowLeft} />
                     </button>
                     <button
-                        className="w-9 h-9 flex items-center justify-center border-2 border-blue-500 rounded-full text-blue-500"
+                        className="w-10 h-10 flex items-center justify-center border-2 border-gray-700 rounded-full text-gray-700"
                         onClick={handleNext}
                     >
                         <FontAwesomeIcon icon={faArrowRight} />
@@ -230,31 +247,33 @@ export default function Home() {
             </div>
 
 
-            <div className="bg-blue-100 flex items-center justify-center mt-14 pt-10 pb-9 overflow-hidden">
-                <div className="text-center w-full">
-                    <h1 className="text-4xl font-bold text-blue-900 mt-8">NEWS & EVENT</h1>
 
-                    <div className="relative mt-10 px-6 overflow-hidden">
-                        <div className="flex auto-scroll gap-3">
+            <div className="bg-blue-100 flex items-center justify-center mt-14 pt-10 pb-9 overflow-hidden">
+                <div className="text-center w-full max-w-7xl md:max-w-full px-2 sm:px-6">
+                    <h1 className="text-3xl sm:text-4xl font-bold text-blue-900">NEWS & EVENT</h1>
+                    <div className="relative mt-10 overflow-hidden">
+                        <div className="auto-scroll gap-2 sm:gap-4 w-max px-1 sm:px-4">
                             {[...testimonials, ...testimonials].map((item, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white rounded-[2rem] shadow-lg h-[50vh] px-4 pt-2 pb-4 flex flex-col w-[250px] flex-shrink-0"
+                                    className="bg-white rounded-2xl shadow-lg w-56 sm:w-64 md:w-72 h-[300px] sm:h-[340px] px-3 pt-2 pb-4 flex flex-col flex-shrink-0 mx-1"
                                 >
                                     <img
                                         src={item.image}
                                         alt={`testimonial-${index}`}
-                                        className="w-full h-[20vh] object-cover rounded-[30px]"
+                                        className="w-full h-[120px] sm:h-[140px] object-cover rounded-xl"
                                     />
-                                    <h1 className="font-bold text-lg mt-2 mb-1">{item.judul}</h1>
-                                    <p className="text-gray-700 text-xs text-center italic px-2">{item.text}</p>
+                                    <h1 className="font-bold text-sm sm:text-base mt-2 mb-1">{item.judul}</h1>
+                                    <p className="text-gray-700 text-xs sm:text-sm text-center italic">{item.text}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
-
                 </div>
             </div>
+
+
+
             <Footer />
         </>
     )

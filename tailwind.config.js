@@ -12,5 +12,7 @@ module.exports = {
       poetsen: ['"Poetsen One"', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [
+      require('@tailwindcss/aspect-ratio')
+  ],
 }
